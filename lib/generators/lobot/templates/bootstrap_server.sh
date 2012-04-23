@@ -18,16 +18,13 @@ grep -sq "$authorized_keys_string" /home/$APP_USER/.ssh/authorized_keys || cat /
 
 ## enable ssh password auth
 perl -p -i -e 's/PasswordAuthentication no/PasswordAuthentication yes/' /etc/ssh/sshd_config 
-/etc/init.d/sshd reload
-
-# install epel
-rpm -q epel-release-5-4.noarch || rpm -Uvh http://mirrors.kernel.org/fedora-epel/5/x86_64/epel-release-5-4.noarch.rpm
+/etc/init.d/sshd reloads
 
 # install git
-yum -y install git
+sudo apt-get install git
 
-# rvm prereqs
-yum install -y gcc-c++ patch readline readline-devel zlib zlib-devel libffi-devel openssl-devel iconv-devel java
+#rvm requirements
+sudo /usr/bin/apt-get install build-essential openssl libreadline6 libreadline6-dev curl git-core zlib1g zlib1g-dev libssl-dev libyaml-dev libsqlite3-0 libsqlite3-dev sqlite3 libxml2-dev libxslt-dev autoconf libc6-dev ncurses-dev automake libtool bison subversion
 
 # passwordless sudo
 sudo_string='ALL            ALL = (ALL) NOPASSWD: ALL'

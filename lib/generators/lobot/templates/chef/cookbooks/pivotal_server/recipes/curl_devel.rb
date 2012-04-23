@@ -1,3 +1,3 @@
-yum_package "curl-devel" do
+package "libcurl-dev" do
   action :install
 end
